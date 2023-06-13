@@ -1,14 +1,17 @@
 import "./App.css";
 import Header from "./Components/Header/Header";
 import Body from "./Components/Body/Body";
-import Grid from "@mui/material/Grid";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <Grid className="App">
+    <BrowserRouter>
+      {/* <BrowserRouter basename ="/Flash"> */}
       <Header />
-      <Body />
-    </Grid>
+      <Routes>
+        <Route exact path="/" element={<Body />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
