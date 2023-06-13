@@ -5,8 +5,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <BrowserRouter>
-      {/* <BrowserRouter basename ="/Flash"> */}
+    // <BrowserRouter>
+      <BrowserRouter basename ="/igrantweatherapp">
       <Header />
       <Routes>
         <Route exact path="/" element={<Body />} />
