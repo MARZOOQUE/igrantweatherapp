@@ -3,6 +3,22 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import { SearchApi, MapApi } from "../../API/api";
+import { styled } from '@mui/material/styles';
+
+const Root = styled('div')(({ theme }) => ({
+  [theme.breakpoints.down('md')]: {
+    width: "50%",
+  },
+  [theme.breakpoints.down('sm')]: {
+    width: "70%",
+  },
+  [theme.breakpoints.up('md')]: {
+    width: "50%",
+  },
+  [theme.breakpoints.up('lg')]: {
+    width: "50%",
+  },
+}));
 
 export default function SearchBox(props) {
   const { selectPosition, setSelectPosition, setData } = props;
@@ -19,11 +35,10 @@ export default function SearchBox(props) {
   }, [selectPosition]);
 
   return (
-    <Grid
+    <Root
       style={{
         display: "flex",
         flexDirection: "column",
-        width: "50%",
         position: "absolute",
         zIndex: 999,
       }}
@@ -49,6 +64,6 @@ export default function SearchBox(props) {
           </Button>
         </Grid>
       </Grid>
-    </Grid>
+    </Root>
   );
 }
