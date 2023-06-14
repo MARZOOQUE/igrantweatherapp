@@ -1,12 +1,12 @@
 import "./App.css";
 import Header from "./Components/Header/Header";
-import Body from "./Components/Body/Body";
+import Body from "./Pages/Body/Body";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    // <BrowserRouter>
-      <BrowserRouter basename ="/igrantweatherapp">
+    <BrowserRouter>
+      {/* // <BrowserRouter basename ="/igrantweatherapp"> */}
       <Header />
       <Routes>
         <Route exact path="/" element={<Body />} />

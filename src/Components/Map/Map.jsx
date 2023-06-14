@@ -13,11 +13,13 @@ const position = [51.505, -0.09];
 function ResetCenterView(props) {
   const { selectPosition } = props;
   const map = useMap();
+  const lat = selectPosition?.city?.coord?.lat ? selectPosition?.city?.coord?.lat : 11.8745
+  const lon = selectPosition?.city?.coord?.lon ? selectPosition?.city?.coord?.lon : 75.3704
 
   useEffect(() => {
     if (selectPosition) {
       map.setView(
-        L.latLng(selectPosition?.lat, selectPosition?.lon),
+        L.latLng(lat,lon),
         map.getZoom(),
         {
           animate: true,
@@ -31,8 +33,10 @@ function ResetCenterView(props) {
 
 export default function Maps(props) {
   const { selectPosition } = props;
-  const locationSelection = [selectPosition?.lat, selectPosition?.lon];
-
+  const lat = selectPosition?.city?.coord?.lat ? selectPosition?.city?.coord?.lat : 11.8745
+  const lon = selectPosition?.city?.coord?.lon ? selectPosition?.city?.coord?.lon : 75.3704
+  const locationSelection = [lat, lon];
+  const MapUrl = "https://api.maptiler.com/maps/basic-v2/{z}/{x}/{y}@2x.png?key=BrOT1HtiVLemQLWqTpyB"
   return (
     <MapContainer
       center={position}
@@ -41,7 +45,7 @@ export default function Maps(props) {
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://api.maptiler.com/maps/basic-v2/{z}/{x}/{y}@2x.png?key=BrOT1HtiVLemQLWqTpyB"
+        url= {MapUrl}
       />
       {selectPosition && (
         <Marker position={locationSelection} icon={icon}>

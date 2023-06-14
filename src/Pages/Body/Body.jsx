@@ -1,13 +1,10 @@
 import { useState } from "react";
-import SearchBar from "../Search/SearchBar";
-import Maps from "../Map/Map";
+import SearchBar from "../../Components/Search/SearchBar";
+import Maps from "../../Components/Map/Map";
 import { Grid, Card } from "@mui/material";
-import DetailsContainer from "../DetailsContainer/DetailsContainer";
-
+import DetailsContainer from "../../Components/DetailsContainer/DetailsContainer";
 
 function Body() {
-  
-  
   const [selectPosition, setSelectPosition] = useState(null);
   const [data, setData] = useState();
 
