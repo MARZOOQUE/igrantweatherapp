@@ -1,4 +1,4 @@
-export function SearchApi(searchText, setSelectPosition) {
+export function SearchApi(searchText, setSelectPosition, setError,setSearchText) {
   const REACT_APP_MAP_API_KEY = process.env.REACT_APP_MAP_API_KEY;
   const REACT_APP_MAP_MAP_BASE_URL = process.env.REACT_APP_MAP_MAP_BASE_URL;
 
@@ -7,9 +7,14 @@ export function SearchApi(searchText, setSelectPosition) {
   )
     .then((response) => response.text())
     .then((result) => {
-      setSelectPosition(JSON.parse(result));
+      console.log("error", JSON.parse(result).message)
+      if(JSON.parse(result).message === "Nothing to geocode"){
+        setError("Please enter a valid city name")
+      }else if(JSON.parse(result).message === "city not found"){
+        setError("City not found")
+      }else {setSelectPosition(JSON.parse(result)); setSearchText("")}
     })
-    .catch((err) => console.log("err: ", err));
+    .catch((err) => console.log("err", err) );
 }
 
 export function MapApi(latitude, longitude, setData) {

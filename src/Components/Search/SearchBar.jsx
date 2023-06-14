@@ -21,7 +21,7 @@ const Root = styled('div')(({ theme }) => ({
 }));
 
 export default function SearchBox(props) {
-  const { selectPosition, setSelectPosition, setData } = props;
+  const { selectPosition, setSelectPosition, setData, setError } = props;
   const [searchText, setSearchText] = useState("");
   const latitude = selectPosition?.city?.coord?.lat
     ? selectPosition?.city?.coord?.lat
@@ -58,7 +58,7 @@ export default function SearchBox(props) {
           <Button
             variant="contained"
             style={{ backgroundColor: "#2d545e", marginLeft: 10 }}
-            onClick={() => SearchApi(searchText, setSelectPosition)}
+            onClick={() => SearchApi(searchText, setSelectPosition, setError,setSearchText)}
           >
             Search
           </Button>

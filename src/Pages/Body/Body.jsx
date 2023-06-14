@@ -4,6 +4,7 @@ import Maps from "../../Components/Map/Map";
 import { Grid, Card } from "@mui/material";
 import DetailsContainer from "../../Components/DetailsContainer/DetailsContainer";
 import { styled } from '@mui/material/styles';
+import ErrorAlert from "../../Components/ErrorAlert/ErrorAlert"
 
 const Root = styled('div')(({ theme }) => ({
   [theme.breakpoints.down('md')]: {
@@ -24,6 +25,8 @@ const Root = styled('div')(({ theme }) => ({
 function Body() {
   const [selectPosition, setSelectPosition] = useState(null);
   const [data, setData] = useState();
+  const [error, setError] = useState("");
+
 
   return (
     <>
@@ -40,9 +43,10 @@ function Body() {
           setSelectPosition={setSelectPosition}
           data={data}
           setData={setData}
+          setError={setError}
         />
       </Grid>
-
+      {error && <ErrorAlert error={error} setError={setError} /> }
       <Root
         container
         item
